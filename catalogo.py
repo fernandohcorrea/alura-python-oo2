@@ -20,6 +20,8 @@ class Programa:
     def nome(self, novo_nome):
         self._nome; novo_nome.title()
 
+    def __str__(self):
+        return f'{programa.nome} - {self.ano} - {programa.likes} likes'
 
 
 class Filme(Programa) :
@@ -28,12 +30,18 @@ class Filme(Programa) :
         super().__init__(nome, ano)
         self.duracao = duracao
 
+    def __str__(self):
+        return f'{programa.nome} - {self.ano} - {self.duracao} min - {programa.likes} likes'
+
 
 class Serie(Programa) :
 
     def __init__(self, nome, ano, temporadas):
         super().__init__(nome, ano)
         self.temporadas = temporadas
+
+    def __str__(self):
+        return f'{programa.nome} - {self.ano} - {self.temporadas} temporadas - {programa.likes} likes'
 
 
 
@@ -45,7 +53,7 @@ if( __name__ == '__main__'):
     serie = Serie('Atanta', 2018, 2)
     serie.dar_like()
 
-    print(f'Nome: {filme.nome} - Ano:  {filme.ano} -  Duração: {filme.duracao} - Likes: {filme.likes}')
-    print(f'Nome: {serie.nome} - Ano:  {serie.ano} -  Temporadas: {serie.temporadas} - Likes: {serie.likes}')
+    catalogo_filmes_series = [ filme, serie ]
 
-
+    for programa in catalogo_filmes_series:
+        print(programa)
