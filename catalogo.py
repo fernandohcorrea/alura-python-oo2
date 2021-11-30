@@ -50,12 +50,13 @@ class Playlist:
         self.nome = nome
         self.__programas = programas
 
-    @property
-    def programas(self) : 
-        return self.__programas
 
-    @property
-    def size(self):
+    # Magic methods dunder methods ou Data Model :
+
+    def __getitem__(self, item):
+        return self.__programas[item]
+
+    def __len__(self):
         return len(self.__programas)
 
 
@@ -74,7 +75,7 @@ if( __name__ == '__main__'):
     tmep.dar_like()
 
     atlanta = Serie('Atanta', 2018, 2)
-    spartacus = Serie('Spartacus', 2019, 2)
+    spartacus = Serie('Spartacus', 2011, 2)
     spartacus.dar_like()
     spartacus.dar_like()
 
@@ -83,9 +84,9 @@ if( __name__ == '__main__'):
 
     pl_fim_de_semana = Playlist('Fin de semanda', catalogo_filmes_series)
 
-    print(f'Tamanho da minha playlist: {pl_fim_de_semana.size}')
+    print(f'Tamanho da minha playlist: {len(pl_fim_de_semana)}')
 
-    for programa in pl_fim_de_semana.programas:
+    for programa in pl_fim_de_semana:
         print(programa)
 
-    print(f'Ta ou não esta? {dune in pl_fim_de_semana.programas}')
+    print(f'Ta ou não esta? {dune in pl_fim_de_semana}')
